@@ -1,0 +1,125 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-05 11:27+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/base.html:54 templates/base.html:288
+msgid "Home"
+msgstr "Home"
+
+#: templates/base.html:57 templates/base.html:111
+msgid "About Us"
+msgstr ""
+
+#: templates/base.html:60 templates/base.html:294
+msgid "Services"
+msgstr ""
+
+#: templates/base.html:63 templates/base.html:170 templates/base.html:297
+msgid "News"
+msgstr ""
+
+#: templates/base.html:66 templates/base.html:202 templates/base.html:303
+msgid "Contact Us"
+msgstr ""
+
+#: templates/base.html:130
+msgid "Our Team"
+msgstr ""
+
+#: templates/base.html:149
+msgid "What we do"
+msgstr ""
+
+#: templates/base.html:150
+msgid ""
+"Having and managing a correct marketing strategy is crucial in a fast moving "
+"market."
+msgstr ""
+
+#: templates/base.html:210
+msgid "Your Name"
+msgstr ""
+
+#: templates/base.html:213
+msgid "Your Email"
+msgstr ""
+
+#: templates/base.html:216
+msgid "Your Phone Number"
+msgstr ""
+
+#: templates/base.html:221
+msgid "Your Message"
+msgstr ""
+
+#: templates/base.html:226
+msgid "Send"
+msgstr ""
+
+#: templates/base.html:246
+msgid "Get connected with us on social networks:"
+msgstr ""
+
+#: templates/base.html:272
+msgid "THE SVARTO ACADEMY IS EVERWHERE"
+msgstr ""
+
+#: templates/base.html:282
+msgid "Useful links"
+msgstr ""
+
+#: templates/base.html:291
+msgid "About"
+msgstr ""
+
+#: templates/base.html:308
+msgid "Abovyan 1-2, Vanadzor, Armenia "
+msgstr ""
+
+#: templates/not_success.html:6
+msgid "Form submission failed. Please check the errors and try again."
+msgstr ""
+
+#: templates/not_success.html:8
+msgid "Form Submission Failed"
+msgstr ""
+
+#: templates/not_success.html:9
+msgid "There are some errors in the form:"
+msgstr ""
+
+#: templates/not_success.html:17
+msgid "Go back to the form"
+msgstr ""
+
+#: templates/success.html:6
+msgid "Form Successfully Submitted"
+msgstr ""
+
+#: templates/success.html:7
+msgid "Your form has been submitted successfully!"
+msgstr ""
+
+#: templates/success.html:8
+msgid "Thank you for reaching out to us. We will get back to you shortly."
+msgstr ""
+
+#: templates/success.html:9
+msgid "Go back to Home"
+msgstr ""

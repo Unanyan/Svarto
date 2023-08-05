@@ -1,0 +1,376 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    {% load static %}
+    {% load django_bootstrap5 %}
+
+    {% bootstrap_css %}
+
+    {% bootstrap_javascript %}
+
+    {% bootstrap_messages %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block style %}
+        <link rel="stylesheet" type="text/css" href="{% static "fontawesome/css/all.min.css" %}" />
+    {% endblock %}
+    <link href="{% static 'images/icon.png' %}" rel="icon">
+
+    <style>
+        .hero-section {
+            background-image: url('{% static 'images/hero.png' %}');
+            background-size: cover;
+            background-position: center;
+            height: 87vh;
+        }
+        {% for item in what_we_do_items %}
+            #what-we-do .card .block-{{ forloop.counter }}:before {
+                content: "{{ item.icon_code }}";
+            }
+        {% endfor %}
+
+    </style>
+    
+    <title>Svarto</title>
+</head>
+<body>
+    {% block content %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <!-- <a class="navbar-brand" href="#hero">SVARTO <span>consulting</span></a> -->
+            <a class="navbar-brand" href="#hero"><img src="{% static 'images/icon.png' %}"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav h2">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#hero" onclick="closeNavbar(event)">{% trans "Home" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" onclick="closeNavbar(event)">{% trans "About Us" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#what-we-do" onclick="closeNavbar(event)">{% trans "Services" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#news" onclick="closeNavbar(event)">{% trans "News" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-us" onclick="closeNavbar(event)">{% trans "Contact Us" %}</a>
+                    </li>
+
+                    <li class="nav-item" id="language-switcher">
+                        <form action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="/" />
+                
+                            <select class="selectpicker" name="language" style="width: auto;" onchange="this.form.submit()">
+                              {% get_current_language as LANGUAGE_CODE %}
+                              {% get_available_languages as LANGUAGES %}
+                              {% get_language_info_list for LANGUAGES as languages %}
+                              {% for language in languages %}
+                
+                                  <option
+                                    value="{{ language.code }}"
+                                    {% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}
+                                    >
+                                    {% if language.code == 'en' %}
+                                    🇺🇸 <!-- Flag for English (en) -->
+                                  {% elif language.code == 'ru' %}
+                                    🇷🇺 <!-- Flag for Russian (ru) -->
+                                  {% elif language.code == 'hy' %}
+                                    🇦🇲 <!-- Flag for Armenian (hy) -->
+                                    {% endif %}
+                                    <!-- {{ language.code }} -->
+                                  </option>
+                
+                              {% endfor %}
+                            </select>
+                        </form>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+    <section id="hero" class="hero-section">
+    </section>
+    <div class="divider"> </div>
+    <!-- /About section-->
+    <section id="about" class="about section-bg">
+        <div class="container">
+            <!-- <h2 class="section-title">About Us</h2> -->
+            <h2 class="section-title mb-2 h1">{% trans "About Us" %}</h2>
+            <div class="row">
+              <div class="col-md-6">
+                <!-- <img src="{% static 'images/about.jpg' %}" class="img-fluid" alt="About Us Image"> -->
+                <img src="{{ about.image.url }}" class="img-fluid" alt="About Us Image">
+              </div>
+              <div class="col-md-6">
+                <!-- <h2>About Us</h2> -->
+                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae sem a ipsum bibendum varius. Mauris in mauris neque. Ut dignissim mi vitae ex dignissim, sed elementum metus ullamcorper. Duis volutpat malesuada orci, in lobortis urna vulputate eget. Nullam faucibus nulla at elit posuere, vel euismod tortor consequat. Cras sollicitudin pellentesque sem vitae finibus. Curabitur scelerisque lacus non erat bibendum, ut interdum nisl bibendum. Etiam varius finibus cursus. Suspendisse potenti. Vestibulum posuere tellus odio, id vulputate eros efficitur in. Proin fermentum fringilla ante a egestas. Nam ut ligula eget arcu convallis dapibus a auctor lectus. Fusce auctor, nisl nec aliquet tincidunt, felis sapien pellentesque odio, in pulvinar turpis dolor non purus. Sed volutpat cursus risus, non maximus enim pretium at.</p> -->
+                <p>{{ about.text|safe|linebreaksbr }}</p>
+              </div>
+            </div>
+          </div>
+    </section>
+    <!-- /About section end-->
+    <div class="divider"> </div>
+    <!-- /Team section-->
+    <section>
+        <div class="container">
+            <h2 class="section-title mb-2 h1">{% trans "Our Team" %}</h2>
+            <div class="row text-center">
+                {% for team_member in team_members %}
+                <div class="col-xl-3 col-sm-6 mb-5">
+                    <div class="bg-white rounded shadow-sm py-5 px-4">
+                        <img src="{{ team_member.image.url }}" alt="{{ team_member.name }}" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">{{ team_member.name }}</h5>
+                        <span class="small text-uppercase text-muted">{{ team_member.role }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- /Team section-->
+    <div class="divider"> </div>
+    <!-- Services section -->
+    <section id="what-we-do">
+        <div class="container-fluid">
+            <h2 class="section-title mb-2 h1">{% trans "What we do" %}</h2>
+            <p class="text-center text-muted h5">{% trans "Having and managing a correct marketing strategy is crucial in a fast moving market." %}</p>
+            <div class="row mt-5">
+                {% for item in what_we_do_items %}
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <div class="card">
+                        <div class="card-block block-{{ forloop.counter }}">
+                            <h3 class="card-title">{{ item.title }}</h3>
+                            <p class="card-text">{{ item.description|safe|linebreaksbr }}</p>
+                            <!-- Add any additional content you want here -->
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>	
+    </section>
+    <!-- /Services section end-->
+    <div class="divider"> </div>
+    <!-- /News section -->
+    <section id="news">
+        <h2 class="section-title mb-2 h1">{% trans "News" %}</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center right-bck">
+                    <div class="registration-right">
+                        <div class="event-list">
+                            {% for news_item in news_items %}
+                            <div class="card flex-row">
+                                <div class="card-body">
+                                    <h4 class="card-title h5 h4-sm">
+                                        <i class="fas fa-caret-right" aria-hidden="true"></i>
+                                        <span>{{ news_item.date|date:"M d Y" }}</span>
+                                        <i class="fas fa-caret-right" aria-hidden="true"></i>
+                                        <span>{{ news_item.start_time|time:"h:i A" }} - {{ news_item.end_time|time:"h:i A" }}</span>
+                                    </h4>
+                                    <p class="card-text">{{ news_item.content }}</p>
+                                    <!-- <p class="moreText" style="display: none;">Additional text for Card. Additional text for Card.Additional text for Card.</p> -->
+                                    <p class="moreText" style="display: none;">{{ news_item.additional_text }}</p>
+                                    <a class="moreButton" onclick="toggleMoreText(this)">more</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /News section end-->
+    <div class="divider"> </div>
+    <!--Contact us-->
+    <section id="contact-us">
+        <h2 class="section-title mb-2 h1">{% trans "Contact Us" %}</h2>
+
+        <div class="container contact-form">
+            <form method="post" action="{% url 'contact_us' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="txtName" class="form-control" placeholder="{% trans "Your Name" %} *" value="" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="txtEmail" class="form-control" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" placeholder="{% trans "Your Email" %} *" value="" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="txtPhone" class="form-control"  placeholder="{% trans "Your Phone Number" %} *" value="" required/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea name="txtMsg" type="text" class="form-control" placeholder="{% trans "Your Message" %} *" style="width: 100%; height: 150px;" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <div class="form-group">
+                            <input type="submit" name="btnSubmit" class="btnContact btn-sm" value="{% trans "Send" %}" />
+                        </div>
+                    </div>
+                </div>
+            </form>  
+        </div>
+    </section>
+<!-- contact.html -->
+
+  <!-- Footer -->
+  <footer
+          class="text-center text-lg-start text-white"
+          style="background-color: #1c2332"
+          >
+    <!-- Section: Social media -->
+    <section
+             class="d-flex justify-content-between p-4"
+             style="background-color: #FCBF01"
+             >
+      <div class="me-5">
+        <span>{% trans "Get connected with us on social networks:" %}</span>
+      </div>
+
+      <div>
+        <a href="https://www.facebook.com/svarto" class="text-white me-4">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/svarto-academy/?viewAsMember=true" class="text-white me-4">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <div class="row mt-3">
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold">Svarto</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #5f2391; height: 2px"
+                />
+            <p>
+                {% trans "THE SVARTO ACADEMY IS EVERWHERE" %}
+            </p>
+          </div>
+
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            
+          </div>
+
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">{% trans "Useful links" %}</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #5f2391; height: 2px"
+                />
+            <p>
+              <a href="#hero" class="text-white">{% trans "Home" %}</a>
+            </p>
+            <p>
+              <a href="#about" class="text-white">{% trans "About" %}</a>
+            </p>
+            <p>
+              <a href="#what-we-do" class="text-white">{% trans "Services" %}</a>
+            </p>
+            <p>
+              <a href="#news" class="text-white">{% trans "News" %}</a>
+            </p>
+          </div>
+
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">{% trans "Contact Us" %}</h6>
+            <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #5f2391; height: 2px"
+                />
+            <p><i class="fas fa-home mr-3"></i>  {% trans "Abovyan 1-2, Vanadzor, Armenia " %}</p>
+            <p><i class="fas fa-envelope mr-3"></i>  general@svarto.am</p>
+            <p><i class="fas fa-phone mr-3"></i>  + 374 77806266</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.3)">
+      © 2023 Copyright: <a class="text-white" href="#">SVARTO</a>
+    <!-- Copyright -->
+    </footer>
+    <script>
+        var header = document.getElementById("navbarNav");
+        var btns = header.getElementsByClassName("nav-link");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function() {
+          var current = document.getElementsByClassName("active");
+          if (current.length > 0) { 
+            current[0].className = current[0].className.replace(" active", "");
+          }
+          this.className += " active";
+          });
+        }
+
+        function closeNavbar(event) {
+            var navbarCollapse = document.querySelector('.navbar-collapse');
+            navbarCollapse.classList.remove('show');
+
+            // Prevent default link behavior
+            event.preventDefault();
+
+            // Get the href value from the clicked link
+            var href = event.target.getAttribute('href');
+
+            // Delay the navigation by a short time (e.g., 200 milliseconds) to allow the navbar to close
+            setTimeout(function() {
+                window.location.href = href;
+            }, 200);
+        }
+
+        function showMore(){
+            //removes the link
+            document.getElementById('link').parentElement.removeChild('link');
+            //shows the #more
+            document.getElementById('more').style.display = "block";
+        }
+
+        function toggleMoreText(button) {
+            var card = button.parentNode;
+            var moreText = card.getElementsByClassName("moreText")[0];
+            if (moreText.style.display === "none") {
+                moreText.style.display = "block";
+                button.textContent = "less";
+            } else {
+                moreText.style.display = "none";
+                button.textContent = "more";
+            }
+        }
+
+        
+    </script>
+    
+    {% endblock content %}
+    
+</body>
+</html>

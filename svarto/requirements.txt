@@ -1,0 +1,8 @@
+Django==4.1.4
+django-bootstrap5==23.3
+django-filter==23.1
+django-modeltranslation==0.18.11
+django-rest-swagger==2.2.0
+django-static-fontawesome==6.4.0.0
+djangorestframework==3.14.0
+Pillow==7.0.0

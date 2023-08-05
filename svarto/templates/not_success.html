@@ -1,0 +1,20 @@
+{% load i18n %}
+{% block content %}
+    <section id="not-success">
+        <div class="container">
+            <div class="alert alert-danger">
+                {% trans "Form submission failed. Please check the errors and try again." %}
+            </div>
+            <h2 class="section-title mb-2 h1">{% trans "Form Submission Failed" %}</h2>
+            <p>{% trans "There are some errors in the form:" %}</p>
+            <ul>
+                {% for field_errors in form.errors.values %}
+                    {% for error in field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+            <a href="{% url 'index' %}" class="btn btn-primary">{% trans "Go back to the form" %}</a>
+        </div>
+    </section>
+{% endblock %}
