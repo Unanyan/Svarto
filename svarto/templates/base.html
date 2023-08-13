@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Svarto Academy offers top-tier programming courses and web development programs. Join us to master coding, web development, and advance your tech career.">
+    <meta name="keywords" content="Svarto Academy, programming courses, web development, coding, tech career">
+    <meta name="author" content="Svarto Academy">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     {% load static %}
@@ -107,8 +110,7 @@
     <!-- /About section-->
     <section id="about" class="about section-bg">
         <div class="container">
-            <!-- <h2 class="section-title">About Us</h2> -->
-            <h2 class="section-title mb-2 h1">{% trans "About Us" %}</h2>
+            <h3 class="section-title mb-2 h1">{% trans "About Us" %}</h3>
             <div class="row">
               <div class="col-md-6">
                 <!-- <img src="{% static 'images/about.jpg' %}" class="img-fluid" alt="About Us Image"> -->
@@ -117,7 +119,7 @@
               <div class="col-md-6">
                 <!-- <h2>About Us</h2> -->
                 <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae sem a ipsum bibendum varius. Mauris in mauris neque. Ut dignissim mi vitae ex dignissim, sed elementum metus ullamcorper. Duis volutpat malesuada orci, in lobortis urna vulputate eget. Nullam faucibus nulla at elit posuere, vel euismod tortor consequat. Cras sollicitudin pellentesque sem vitae finibus. Curabitur scelerisque lacus non erat bibendum, ut interdum nisl bibendum. Etiam varius finibus cursus. Suspendisse potenti. Vestibulum posuere tellus odio, id vulputate eros efficitur in. Proin fermentum fringilla ante a egestas. Nam ut ligula eget arcu convallis dapibus a auctor lectus. Fusce auctor, nisl nec aliquet tincidunt, felis sapien pellentesque odio, in pulvinar turpis dolor non purus. Sed volutpat cursus risus, non maximus enim pretium at.</p> -->
-                <p>{{ about.text|safe|linebreaksbr }}</p>
+                <p>{{ about.text|safe }}</p>
               </div>
             </div>
           </div>
@@ -125,9 +127,10 @@
     <!-- /About section end-->
     <div class="divider"> </div>
     <!-- /Team section-->
+    {% if team_members %}
     <section>
         <div class="container">
-            <h2 class="section-title mb-2 h1">{% trans "Our Team" %}</h2>
+            <h3 class="section-title mb-2 h1">{% trans "Our Team" %}</h3>
             <div class="row text-center">
                 {% for team_member in team_members %}
                 <div class="col-xl-3 col-sm-6 mb-5">
@@ -143,18 +146,19 @@
     </section>
     <!-- /Team section-->
     <div class="divider"> </div>
+    {% endif %}
     <!-- Services section -->
     <section id="what-we-do">
         <div class="container-fluid">
-            <h2 class="section-title mb-2 h1">{% trans "What we do" %}</h2>
-            <p class="text-center text-muted h5">{% trans "Having and managing a correct marketing strategy is crucial in a fast moving market." %}</p>
+            <h3 class="section-title mb-2 h1">{% trans "Services" %}</h3>
+            <p class="text-center text-muted h5">{% trans "Elevate Your Code, Master Your Future!" %}</p>
             <div class="row mt-5">
                 {% for item in what_we_do_items %}
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
                     <div class="card">
                         <div class="card-block block-{{ forloop.counter }}">
                             <h3 class="card-title">{{ item.title }}</h3>
-                            <p class="card-text">{{ item.description|safe|linebreaksbr }}</p>
+                            <p class="card-text">{{ item.description|safe }}</p>
                             <!-- Add any additional content you want here -->
                         </div>
                     </div>
@@ -167,7 +171,7 @@
     <div class="divider"> </div>
     <!-- /News section -->
     <section id="news">
-        <h2 class="section-title mb-2 h1">{% trans "News" %}</h2>
+        <h3 class="section-title mb-2 h1">{% trans "News" %}</h3>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 d-flex justify-content-center right-bck">
@@ -180,11 +184,9 @@
                                         <i class="fas fa-caret-right" aria-hidden="true"></i>
                                         <span>{{ news_item.date|date:"M d Y" }}</span>
                                         <i class="fas fa-caret-right" aria-hidden="true"></i>
-                                        <span>{{ news_item.start_time|time:"h:i A" }} - {{ news_item.end_time|time:"h:i A" }}</span>
                                     </h4>
-                                    <p class="card-text">{{ news_item.content }}</p>
-                                    <!-- <p class="moreText" style="display: none;">Additional text for Card. Additional text for Card.Additional text for Card.</p> -->
-                                    <p class="moreText" style="display: none;">{{ news_item.additional_text }}</p>
+                                    <p class="card-text">{{ news_item.content|safe }}</p>
+                                    <p class="moreText" style="display: none;">{{ news_item.additional_text|linebreaksbr }}</p>
                                     <a class="moreButton" onclick="toggleMoreText(this)">more</a>
                                 </div>
                             </div>
@@ -199,7 +201,7 @@
     <div class="divider"> </div>
     <!--Contact us-->
     <section id="contact-us">
-        <h2 class="section-title mb-2 h1">{% trans "Contact Us" %}</h2>
+        <h3 class="section-title mb-2 h1">{% trans "Contact Us" %}</h3>
 
         <div class="container contact-form">
             <form method="post" action="{% url 'contact_us' %}">

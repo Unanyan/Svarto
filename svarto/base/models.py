@@ -31,4 +31,4 @@ class NewsItem(models.Model):
     additional_text = models.TextField()
 
     def __str__(self):
-        return f"News on {self.date} - {self.start_time} to {self.end_time}"
+        return f"News on {self.date}"

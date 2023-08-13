@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-05 11:27+0000\n"
+"POT-Creation-Date: 2023-08-13 09:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: templates/base.html:54 templates/base.html:288
+#: templates/base.html:54 templates/base.html:290
 msgid "Home"
 msgstr "Главная"
 
@@ -28,72 +28,65 @@ msgstr "Главная"
 msgid "About Us"
 msgstr "О Нас"
 
-#: templates/base.html:60 templates/base.html:294
+#: templates/base.html:60 templates/base.html:151 templates/base.html:296
 msgid "Services"
 msgstr "Услуги"
 
-#: templates/base.html:63 templates/base.html:170 templates/base.html:297
+#: templates/base.html:63 templates/base.html:172 templates/base.html:299
 msgid "News"
 msgstr "Новости"
 
-#: templates/base.html:66 templates/base.html:202 templates/base.html:303
+#: templates/base.html:66 templates/base.html:204 templates/base.html:305
 msgid "Contact Us"
 msgstr "Связаться С Нами"
 
-#: templates/base.html:130
+#: templates/base.html:131
 msgid "Our Team"
 msgstr "Наша Команда"
 
-#: templates/base.html:149
-msgid "What we do"
-msgstr "Что мы делаем"
+#: templates/base.html:152
+msgid "Elevate Your Code, Master Your Future!"
+msgstr "Поднимите свой код на новый уровень, овладейте будущим!"
 
-#: templates/base.html:150
-msgid ""
-"Having and managing a correct marketing strategy is crucial in a fast moving "
-"market."
-msgstr ""
-"Наличие и управление правильной маркетинговой стратегией имеет решающее "
-"значение в быстро развивающемся бизнесе."
-
-#: templates/base.html:210
+#: templates/base.html:212
 msgid "Your Name"
 msgstr "Имя"
 
-#: templates/base.html:213
+#: templates/base.html:215
 msgid "Your Email"
 msgstr "Электронная почта"
 
-#: templates/base.html:216
+#: templates/base.html:218
 msgid "Your Phone Number"
 msgstr "Номер телефона"
 
-#: templates/base.html:221
+#: templates/base.html:223
 msgid "Your Message"
 msgstr "Сообщение"
 
-#: templates/base.html:226
+#: templates/base.html:228
 msgid "Send"
 msgstr "Отправлять"
 
-#: templates/base.html:246
+#: templates/base.html:248
 msgid "Get connected with us on social networks:"
 msgstr "Присоединяйтесь к нам в социальных сетях:"
 
-#: templates/base.html:272
+#: templates/base.html:274
 msgid "THE SVARTO ACADEMY IS EVERWHERE"
 msgstr "SVARTO ACADEMY ВЕЗДЕ"
 
-#: templates/base.html:282
+#: templates/base.html:284
 msgid "Useful links"
 msgstr "Полезные ссылки"
 
-#: templates/base.html:291
+#: templates/base.html:293
 msgid "About"
 msgstr "О нас"
 
-#: templates/base.html:308
-msgid "Abovyan 1-2, Vanadzor, Armenia"
+#: templates/base.html:310
+#, fuzzy
+msgid "Abovyan 1-2, Vanadzor, Armenia "
 msgstr "Армения, Ванадзор, Абовяна 1-2"
 
 #: templates/not_success.html:6
@@ -129,4 +122,3 @@ msgstr "Спасибо, что связались с нами. Мы скоро �
 #: templates/success.html:9
 msgid "Go back to Home"
 msgstr "Вернуться на главную"
-
