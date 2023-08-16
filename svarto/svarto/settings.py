@@ -151,6 +151,6 @@ LOCALE_PATHS = [
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "vanadzor.company@gmail.com"
-EMAIL_HOST_PASSWORD = "wqmvykngykzkystu"
+EMAIL_HOST_PASSWORD = "pass"
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False

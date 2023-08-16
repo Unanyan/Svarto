@@ -1,9 +1,11 @@
 .navbar {
+    display: flex;
+    align-items: center;
     height: 11%;
 }
 
 .navbar-nav .nav-item .nav-link {
-    padding: 20px 0 20px 38px;
+    padding: 20px 7px 20px 31px;
     color: #222222;
 }
 
@@ -36,6 +38,7 @@
 }
 
 .navbar-brand {
+    margin-right: 0;
     font-weight: bold;
     font-size: 170%;
 }
@@ -58,8 +61,10 @@
 }
 
 #language-switcher  {
-    padding-top: 10px;
-    padding-left: 33px;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    
 }
 
 #language-switcher select {
@@ -69,7 +74,7 @@
 
 #hero{
     padding-bottom: 40px;
-    padding-top: 650px;
+    padding-top: 700px;
 }
 
 .divider {
@@ -83,7 +88,10 @@
 }
 
 @media (max-width: 991.98px) {
-
+    #language-switcher  {
+        padding-left: 30px;
+    }
+        
     .navbar-collapse.show .navbar-nav .nav-item  {
         background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity))!important;
     }
@@ -278,7 +286,7 @@ section .section-title{
 }
 
 #contact-us .contact-form .btnContact {
-    width: 30%;
+    width: 34%;
     border: none;
     border-radius: 1rem;
     padding: 1.5%;
